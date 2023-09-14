@@ -36,8 +36,9 @@ plt.plot(xplot,yplot, c='red', linestyle ="dashed", lw=2.0)
 
 plt.xlabel(r"Upper $J$ number of transition"); plt.ylabel("$E_u$ [K]")
 plt.tight_layout()
-out = 'Leiden_CO_E-T=%1.0f_c=%1.2f.eps'  %(T,c)
-#plt.savefig(out, format='eps'); print('Written to %s' %(out))
+out = 'Leiden_CO_E-T=%1.0f_c=%1.2f'  %(T,c)
+#plt.savefig("%s.eps" %(out), format='eps'); print('Written to %s' %(out))
+plt.savefig("%s.png" %(out), format='png'); print('Written to %s' %(out))
 #plt.show()
 plt.close()
 
@@ -63,8 +64,9 @@ ax.plot(x,y,'o', markersize=5, c = 'k')
 
 plt.xlabel(r"Upper $J$ number of transition"); plt.ylabel("$\sum N_J$ [cm$^{-2}$]")
 plt.tight_layout()
-out = 'Leiden_CO_N-T=%1.0f_c=%1.2f.eps'  %(T,c)
-plt.savefig(out, format='eps'); print('Written to %s' %(out))
+out = 'Leiden_CO_N-T=%1.0f_c=%1.2f'  %(T,c)
+#plt.savefig("%s.eps" %(out), format='eps'); print('Written to %s' %(out))
+plt.savefig("%s.png" %(out), format='png'); print('Written to %s' %(out))
 plt.show()
 plt.close()
 
