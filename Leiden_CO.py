@@ -37,13 +37,13 @@ plt.plot(xplot,yplot, c='red', linestyle ="dashed", lw=2.0)
 plt.xlabel(r"Upper $J$ number of transition"); plt.ylabel("$E_u$ [K]")
 plt.tight_layout()
 out = 'Leiden_CO_E-T=%1.0f_c=%1.2f'  %(T,c)
-#plt.savefig("%s.eps" %(out), format='eps'); print('Written to %s' %(out))
+plt.savefig("%s.eps" %(out), format='eps'); print('Written to %s' %(out))
 plt.savefig("%s.png" %(out), format='png'); print('Written to %s' %(out))
-#plt.show()
+plt.show()
 plt.close()
 
 ############ SUMMING ##############
-df['N'] = df['UP']*np.exp(-(df['E_u(K)']/T) +c);
+df['N'] = (2*df['UP']+1)*np.exp(-(df['E_u(K)']/T) +c);
 df['N_total'] = round(df.N.cumsum(),3)
 
 df['temp'] = df['E_u(K)'].shift(1) # PREVIOUS VALUE
@@ -65,7 +65,7 @@ ax.plot(x,y,'o', markersize=5, c = 'k')
 plt.xlabel(r"Upper $J$ number of transition"); plt.ylabel("$\sum N_J$ [cm$^{-2}$]")
 plt.tight_layout()
 out = 'Leiden_CO_N-T=%1.0f_c=%1.2f'  %(T,c)
-#plt.savefig("%s.eps" %(out), format='eps'); print('Written to %s' %(out))
+plt.savefig("%s.eps" %(out), format='eps'); print('Written to %s' %(out))
 plt.savefig("%s.png" %(out), format='png'); print('Written to %s' %(out))
 plt.show()
 plt.close()
@@ -78,7 +78,7 @@ stop = 10000
 sum = 0
 for J in range(1,stop+1):
     E = fit[0]*J**2 + fit[1]*J + fit[2];
-    N = J*np.exp(-1*E/T +c)
+    N = (2*J+1)*np.exp(-1*E/T +c)
     #print(N)
     sum = sum + N
 
